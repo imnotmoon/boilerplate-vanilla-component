@@ -4,7 +4,7 @@ export default class Component {
 	eventHandlers = [];
 
 	constructor(target, props) {
-		this._target = target;
+		this._target = () => document.querySelector(target);
 		this._props = props;
 		this.mount();
 	}
