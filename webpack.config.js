@@ -5,9 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+	mode: "none",
 	entry: "./index.js",
 	output: {
-		filename: "index.js",
+		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),
 	},
 	module: {
@@ -36,11 +37,17 @@ module.exports = {
 			},
 		],
 	},
+	devServer: {
+		port: 9000,
+		static: {
+			directory: path.join(__dirname, "public"),
+		},
+		hot: true,
+		compress: true,
+	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./index.html",
-			filename: "./index.html",
-			chunks: ["index"],
 		}),
 	],
 	devtool: "inline-source-map",
