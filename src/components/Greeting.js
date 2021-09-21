@@ -11,6 +11,6 @@ export default class Greeting extends Component {
 	}
 
 	template = () => `
-        <div>Greeting</div>
+        <div>Hello World!</div>
     `;
 }
