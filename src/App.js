@@ -1,5 +1,6 @@
 import Component from "./core/Component";
 import State from "./core/State";
+import "./stylesheets/App.scss";
 
 // components
 import Greeting from "./components/Greeting";
