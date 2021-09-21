@@ -2,24 +2,28 @@ export default class Component {
 	_target;
 	_view;
 	eventHandlers = [];
+	children = [];
 
 	constructor(target, props) {
 		this._target = () => document.querySelector(target);
 		this._props = props;
-		this.mount();
 	}
 
-	template = () => "";
+	initChildren = () => {
+		console.log(this);
+	};
+
 	addEvents() {}
 
 	// mount
 	componentDidMount() {
 		this.addEvents();
 	}
-	mount() {
+	mount = () => {
 		this.render();
 		this.componentDidMount();
-	}
+		this.initChildren();
+	};
 
 	// props, state update
 	updateProps(props) {
@@ -43,7 +47,7 @@ export default class Component {
 		return false;
 	}
 	render() {
-		this._target.innerHTML = this.template();
+		this._target().insertAdjacentHTML("beforeend", this.template());
 	}
 	componentDidUpdate() {}
 
