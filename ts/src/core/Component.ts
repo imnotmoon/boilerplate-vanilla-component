@@ -10,23 +10,22 @@ export default class Component {
 	protected eventHandlers = [];
 	protected children: Array<Component> = [];
 
-	constructor(target: string, model: Model, view: View, props?: any) {
+	constructor(target: string, props?: any) {
 		this.target = () => document.querySelector(target);
 		this.targetSelector = target;
-		this.model = model;
-		this.view = view;
 		if (props) this.props = props;
-
-		this.render();
 	}
 
-	initChildren: () => void = () => {
-		console.log(this);
+	initChildren: () => void = () => {};
+
+	setState = (newState: object) => {
+		this.model?.setState(newState);
+		this.render();
 	};
 
 	addEvents: () => void = () => {};
 
-	render: () => void = () => {
-		this.view!.render(this.model!.getState());
-	};
+	render() {
+		this.view!.render(this.model!.getState(), this.props);
+	}
 }

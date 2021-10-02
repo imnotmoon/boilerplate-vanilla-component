@@ -5,9 +5,9 @@ export default class View {
 		this.target = () => document.querySelector(target);
 	}
 
-	template: (state: any) => string = (state) => ``;
+	template: (state: any, props: object | undefined) => string = (state) => ``;
 
-	render: (state: any) => void = (state) => {
-		this.target()!.innerHTML = this.template(state);
+	render: (state: any, props?: object) => void = (state, props) => {
+		this.target()!.insertAdjacentHTML("beforeend", this.template(state, props));
 	};
 }
